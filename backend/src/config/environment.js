@@ -13,19 +13,19 @@ const schema = Joi.object({
   JWT_EXPIRES_IN: Joi.string()
     .default('24h'),
   CLOUDINARY_CLOUD_NAME: Joi.string()
-    .required(),
+    .optional(),
   CLOUDINARY_API_KEY: Joi.string()
-    .required(),
+    .optional(),
   CLOUDINARY_API_SECRET: Joi.string()
-    .required(),
+    .optional(),
   SENDGRID_API_KEY: Joi.string()
-    .required(),
+    .optional(),
   SENDGRID_FROM_EMAIL: Joi.string()
     .default('noreply@check-oil.com'),
   MERCADOPAGO_ACCESS_TOKEN: Joi.string()
-    .required(),
+    .optional(),
   MERCADOPAGO_WEBHOOK_URL: Joi.string()
-    .required(),
+    .optional(),
   TIENDA_URL: Joi.string()
     .default('http://localhost:5173'),
   ADMIN_URL: Joi.string()
