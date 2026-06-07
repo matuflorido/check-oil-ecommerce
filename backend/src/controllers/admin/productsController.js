@@ -128,18 +128,20 @@ export const createProducto = async (req, res, next) => {
     } = req.body;
 
     // Validate required fields
-    if (!nombre || !categoria_id || precio_base === undefined || !sku) {
+    if (!nombre || precio_base === undefined || !sku) {
       return res.status(400).json({
-        error: 'nombre, categoria_id, precio_base, and sku are required',
+        error: 'nombre, precio_base, and sku are required',
       });
     }
 
-    // Verify category exists
-    const category = await Category.findByPk(categoria_id, { transaction });
-    if (!category) {
-      return res.status(404).json({
-        error: 'Category not found',
-      });
+    // Verify category exists (if provided)
+    if (categoria_id) {
+      const category = await Category.findByPk(categoria_id, { transaction });
+      if (!category) {
+        return res.status(404).json({
+          error: 'Category not found',
+        });
+      }
     }
 
     // Create product
